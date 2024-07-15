@@ -1,0 +1,30 @@
+
+{% load static %}
+{% block metadescription %}
+    We have give to you variety of movieee...<br>
+{% endblock %}
+{% block title %}
+    <b>Search</b>
+{% endblock %}
+{% block content %}
+<div>
+    <p class="text-center my_search_text"> You have search for :<b>"{{query}}"</b></p>
+</div>
+<div class="container">
+    <div class="row mx_auto">
+        {% for movie_details in movie_details %}
+        <div class="my_bottom_margin col-9 col-sm-12 col-md-4  col-lg-4" >
+            <div class="card text-center" style="min-width:18rem;">
+                <a href="{{movie_details.get_url}}"><img style="width: 410px; height: 300px;" class="card-img-top my_image" src="{{movie_details.poster.url}}" alt="{{movie_details.name}}"></a>
+                <div class="card-body" style="width: 410;height: 200px;">
+                    <h4 style="color: #2272FF;" >{{movie_details.title}}</h4>
+                    <p style="color: #2272FF;">{{movie_details.description}}</p>
+                    <p>Released Date:{{movie_details.release_date}}</p>
+                    <link>Trailer:{{movie_details.trailer_Link}}</link>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
